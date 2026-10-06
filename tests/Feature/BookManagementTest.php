@@ -90,4 +90,68 @@ class BookManagementTest extends TestCase
             'password' => 'Dhilah123',
         ])->assertRedirect(route('books.index'));
     }
+
+    public function test_user_can_search_books_by_title_or_author(): void
+    {
+        $user = User::factory()->create();
+        $category = Category::create(['name' => 'Fiksi']);
+        Book::create([
+            'category_id' => $category->id,
+            'title' => 'Laskar Pelangi',
+            'author' => 'Andrea Hirata',
+            'publisher' => 'Bentang Pustaka',
+            'year' => 2005,
+            'stock' => 5,
+        ]);
+        Book::create([
+            'category_id' => $category->id,
+            'title' => 'Bumi Manusia',
+            'author' => 'Pramoedya Ananta Toer',
+            'publisher' => 'Hasta Mitra',
+            'year' => 1980,
+            'stock' => 3,
+        ]);
+
+        $this->actingAs($user)
+            ->get(route('books.index', ['search' => 'Laskar']))
+            ->assertOk()
+            ->assertSee('Laskar Pelangi')
+            ->assertDontSee('Bumi Manusia');
+
+        $this->actingAs($user)
+            ->get(route('books.index', ['search' => 'Pramoedya']))
+            ->assertOk()
+            ->assertSee('Bumi Manusia')
+            ->assertDontSee('Laskar Pelangi');
+    }
+
+    public function test_user_can_filter_books_by_category(): void
+    {
+        $user = User::factory()->create();
+        $fiction = Category::create(['name' => 'Fiksi']);
+        $education = Category::create(['name' => 'Pendidikan']);
+        Book::create([
+            'category_id' => $fiction->id,
+            'title' => 'Laskar Pelangi',
+            'author' => 'Andrea Hirata',
+            'publisher' => 'Bentang Pustaka',
+            'year' => 2005,
+            'stock' => 5,
+        ]);
+        Book::create([
+            'category_id' => $education->id,
+            'title' => 'Matematika Dasar',
+            'author' => 'Budi Santoso',
+            'publisher' => 'Erlangga',
+            'year' => 2024,
+            'stock' => 8,
+        ]);
+
+        $this->actingAs($user)
+            ->get(route('books.index', ['category_id' => $fiction->id]))
+            ->assertOk()
+            ->assertSee('Laskar Pelangi')
+            ->assertDontSee('Matematika Dasar')
+            ->assertSee('value="'.$fiction->id.'" selected', false);
+    }
 }

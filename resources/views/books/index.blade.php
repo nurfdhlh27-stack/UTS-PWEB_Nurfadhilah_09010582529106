@@ -38,8 +38,14 @@
             <form class="search" method="GET" action="{{ route('books.index') }}">
                 <div class="search-field">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.5 4.5"/></svg>
-                    <input type="search" name="search" value="{{ $search }}" placeholder="Cari judul, penulis, kategori..." aria-label="Cari koleksi buku">
+                    <input type="search" name="search" value="{{ $search }}" placeholder="Cari judul atau penulis..." aria-label="Cari judul atau penulis">
                 </div>
+                <select name="category_id" aria-label="Filter berdasarkan kategori">
+                    <option value="">Semua kategori</option>
+                    @foreach ($categories as $category)
+                        <option value="{{ $category->id }}" @selected((string) $categoryId === (string) $category->id)>{{ $category->name }}</option>
+                    @endforeach
+                </select>
                 <button class="button" type="submit">Cari</button>
             </form>
         </div>

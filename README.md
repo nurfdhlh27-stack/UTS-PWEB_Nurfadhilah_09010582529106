@@ -37,7 +37,7 @@ Untuk instalasi ulang database lokal, jalankan `php artisan migrate:fresh --seed
 - **Seeder:** `DatabaseSeeder` membuat akun demo, kategori, dan contoh buku dengan aman saat dijalankan berulang.
 - **Relationship:** satu kategori memiliki banyak buku (`Category::books`), dan setiap buku dimiliki satu kategori (`Book::category`); foreign key kategori membatasi penghapusan kategori yang masih digunakan.
 - **Git:** proyek ini berada dalam repository Git. Gunakan `git status` untuk melihat perubahan dan `git add`/`git commit` untuk menyimpan pekerjaan.
-- Pencarian berdasarkan judul, penulis, dan kategori, serta pagination daftar buku.
+- Pencarian berdasarkan judul atau penulis, filter berdasarkan kategori, serta pagination daftar buku.
 
 ## Pengujian
 

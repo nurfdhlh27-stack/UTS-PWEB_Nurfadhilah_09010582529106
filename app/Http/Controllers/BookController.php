@@ -12,16 +12,21 @@ class BookController extends Controller
 {
     public function index(Request $request): View
     {
+        $filters = $request->validate([
+            'search' => ['nullable', 'string', 'max:255'],
+            'category_id' => ['nullable', 'integer', 'exists:categories,id'],
+        ]);
         $search = $request->string('search')->trim()->toString();
+        $categoryId = $filters['category_id'] ?? null;
 
         $books = Book::with('category')
             ->when($search !== '', function ($query) use ($search): void {
                 $query->where(function ($query) use ($search): void {
                     $query->where('title', 'like', "%{$search}%")
-                        ->orWhere('author', 'like', "%{$search}%")
-                        ->orWhereHas('category', fn ($categoryQuery) => $categoryQuery->where('name', 'like', "%{$search}%"));
+                        ->orWhere('author', 'like', "%{$search}%");
                 });
             })
+            ->when($categoryId, fn ($query) => $query->where('category_id', $categoryId))
             ->latest()
             ->paginate(10)
             ->withQueryString();
@@ -29,6 +34,8 @@ class BookController extends Controller
         return view('books.index', [
             'books' => $books,
             'search' => $search,
+            'categories' => Category::orderBy('name')->get(),
+            'categoryId' => $categoryId,
             'totalBooks' => Book::count(),
             'totalCategories' => Category::count(),
             'totalStock' => Book::sum('stock'),

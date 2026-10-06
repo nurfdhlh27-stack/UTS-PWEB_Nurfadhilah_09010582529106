@@ -503,6 +503,19 @@
         .book-stack span:nth-child(3) { background: #759994; }
         .book-stack span:nth-child(4) { background: #e0c48e; }
         .pagination-wrap span[aria-current] span { border-color: #167c80; background: #167c80; }
+        .search { width: min(640px, 68%); gap: 9px; }
+        .search-field { min-width: 150px; }
+        .search select { width: 155px; flex: 0 0 155px; }
+        .search .button { flex: 0 0 auto; }
+        @media (max-width: 760px) {
+            .search { width: 100%; }
+        }
+        @media (max-width: 560px) {
+            .search { gap: 7px; }
+            .search-field { min-width: 0; }
+            .search select { width: 130px; flex-basis: 130px; }
+            .search .button { padding: 0 12px; }
+        }
     </style>
 </head>
 <body>
