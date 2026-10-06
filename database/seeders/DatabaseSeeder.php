@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
     {
         User::updateOrCreate(
             ['email' => 'test@example.com'],
-            ['name' => 'Admin Perpustakaan', 'password' => Hash::make('password')],
+            ['name' => 'Dhilah123', 'password' => Hash::make('Dhilah123')],
         );
 
         $categories = collect([

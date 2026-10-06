@@ -3,10 +3,17 @@
 @section('title', 'Tambah Buku')
 
 @section('content')
-    <div class="heading"><h1>Tambah Buku</h1></div>
-    <section class="card">
+    @section('breadcrumb', 'Tambah Buku')
+    <div class="heading">
+        <div>
+            <p class="eyebrow">KOLEKSI · BUKU BARU</p>
+            <h1>Tambahkan cerita baru.</h1>
+            <p class="subtitle">Masukkan detail buku untuk menambahkannya ke koleksi.</p>
+        </div>
+    </div>
+    <section class="form-card">
         @if ($categories->isEmpty())
-            <p class="muted">Belum ada kategori. Jalankan seeder terlebih dahulu: <code>php artisan db:seed</code>.</p>
+            <div class="alert error-box">Belum ada kategori. Jalankan seeder terlebih dahulu: <code>php artisan db:seed</code>.</div>
         @else
             <form method="POST" action="{{ route('books.store') }}">
                 @include('books.form', ['submitLabel' => 'Simpan Buku'])

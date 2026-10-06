@@ -26,7 +26,13 @@ class BookController extends Controller
             ->paginate(10)
             ->withQueryString();
 
-        return view('books.index', compact('books', 'search'));
+        return view('books.index', [
+            'books' => $books,
+            'search' => $search,
+            'totalBooks' => Book::count(),
+            'totalCategories' => Category::count(),
+            'totalStock' => Book::sum('stock'),
+        ]);
     }
 
     public function create(): View

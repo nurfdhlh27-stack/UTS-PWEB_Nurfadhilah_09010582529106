@@ -23,7 +23,7 @@ class BookManagementTest extends TestCase
 
         $this->assertGreaterThanOrEqual(3, Category::count());
         $this->assertGreaterThanOrEqual(5, Book::count());
-        $this->assertDatabaseHas('users', ['email' => 'test@example.com']);
+        $this->assertDatabaseHas('users', ['email' => 'test@example.com', 'name' => 'Dhilah123']);
     }
 
     public function test_user_can_create_view_update_and_delete_a_book(): void
@@ -64,7 +64,7 @@ class BookManagementTest extends TestCase
     {
         $user = User::factory()->create(['password' => 'password']);
         $this->post(route('login.store'), [
-            'email' => $user->email,
+            'login' => $user->email,
             'password' => 'password',
         ])->assertRedirect(route('books.index'));
 
@@ -79,5 +79,15 @@ class BookManagementTest extends TestCase
                 'stock' => -1,
             ])
             ->assertSessionHasErrors(['title', 'stock']);
+    }
+
+    public function test_seeded_user_can_log_in_with_dhilah123_username_and_password(): void
+    {
+        $this->seed();
+
+        $this->post(route('login.store'), [
+            'login' => 'Dhilah123',
+            'password' => 'Dhilah123',
+        ])->assertRedirect(route('books.index'));
     }
 }
