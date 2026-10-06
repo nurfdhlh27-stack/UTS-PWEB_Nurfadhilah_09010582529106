@@ -404,6 +404,105 @@
             .side-link { color: #e1e8f1; }
             .side-link.active { background: #2a3b55; }
         }
+        :root {
+            color: #1e293b;
+            background: #f5f8fc;
+            --muted: #475569;
+            --line: #dbe3ee;
+        }
+        body { color: #1e293b; background: #f5f8fc; font-size: 15px; }
+        button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible {
+            outline-color: #60a5fa;
+        }
+        .brand-caption { letter-spacing: .1em; }
+        .side-label { letter-spacing: .1em; }
+        .side-link { min-height: 48px; font-size: 14px; font-weight: 500; }
+        .breadcrumb { font-size: 14px; }
+        .user-copy strong { font-size: 13px; }
+        .user-copy span { font-size: 12px; }
+        .page-footer, .guest-footer { color: #475569; font-size: 12px; }
+        .eyebrow { letter-spacing: .1em; }
+        .subtitle { color: #475569; }
+        .stat-label { color: #475569; font-size: 12px; }
+        .catalog-title p { color: #475569; font-size: 13px; }
+        .search input, input, select { font-size: 14px; }
+        input::placeholder { color: #64748b; }
+        th { color: #334155; font-size: 11px; letter-spacing: .08em; }
+        td { color: #334155; font-size: 14px; }
+        .book-name { color: #17243a; font-size: 14px; }
+        .book-author { color: #475569; font-size: 13px; }
+        .category-pill { font-size: 12px; }
+        .stock-unit { color: #475569; font-size: 13px; }
+        .form-intro { color: #475569; font-size: 13px; }
+        label { color: #1e293b; font-size: 13px; }
+        .field-hint { color: #475569; font-size: 12px; }
+        .error { font-size: 12px; }
+        .info-item span { color: #475569; font-size: 11px; }
+        .info-item strong { color: #17243a; font-size: 14px; }
+        .login-card > p { color: #475569; font-size: 14px; }
+        .login-art-copy p { line-height: 1.8; }
+        @media (max-width: 760px) {
+            .side-label, .side-note { display: none; }
+            .side-link span { display: inline; }
+            .side-link { gap: 8px; padding: 0 10px; font-size: 13px; }
+        }
+        @media (max-width: 560px) {
+            .brand-caption { display: none; }
+            .side-link { font-size: 12px; }
+            .topbar { gap: 10px; }
+            .breadcrumb { gap: 7px; font-size: 12px; }
+            .catalog-title p { font-size: 12px; }
+            .book-name { font-size: 13px; }
+            .book-author { font-size: 12px; }
+        }
+        :root {
+            background: #f6f5ef;
+            --forest: #167c80;
+            --forest-dark: #173b42;
+            --leaf: #dceeed;
+            --orange: #d2a66e;
+            --muted: #4d6264;
+            --line: #dce5e1;
+        }
+        body { color: #203a3d; background: #f6f5ef; }
+        .sidebar { background: #173b42; }
+        .brand-mark, .side-note-icon { color: #b9ddda; }
+        .brand-caption, .side-note span { color: #c4d9d7; }
+        .side-label { color: #b7cfcd; }
+        .side-link { color: #e4efed; }
+        .side-link svg { color: #b9ddda; }
+        .side-link:hover, .side-link.active { background: #28515a; }
+        .side-link.active { box-shadow: inset 3px 0 #e1bd83; }
+        .side-note { border-color: #42636a; background: #21474e; }
+        .topbar { background: #fffefa; }
+        .avatar, .login-welcome { color: #11666a; background: #dceeed; }
+        h1, .login-card h2 { color: #173b42; }
+        .eyebrow { color: #176f71; }
+        .eyebrow::before { background: #d2a66e; }
+        .button { background: #167c80; }
+        .button:hover { background: #11666a; box-shadow: 0 6px 15px #173b4226; }
+        .button.secondary:hover { color: #11666a; background: #edf5f1; }
+        .stat-card { border-color: #dce5e1; background: #fffefa; }
+        .stat-icon { color: #167c80; background: #dceeed; }
+        .stat-card:nth-child(2) .stat-icon { color: #936a35; background: #f4ead6; }
+        .stat-card:nth-child(3) .stat-icon { color: #4c746e; background: #e3eee8; }
+        .catalog-card, .form-card, .detail-card { border-color: #dce5e1; background: #fffefa; }
+        .result-count, .category-pill { color: #11666a; background: #e2f0ed; }
+        input:focus, select:focus { border-color: #55a3a0; box-shadow: 0 0 0 3px #dceeed; }
+        .book-cover, .detail-cover { background: linear-gradient(145deg, #55aaa2, #167c80); }
+        tbody tr:nth-child(3n + 2) .book-cover { background: linear-gradient(145deg, #d2b27b, #987442); }
+        tbody tr:nth-child(3n) .book-cover { background: linear-gradient(145deg, #759994, #426a67); }
+        .icon-link:hover { color: #11666a; background: #dceeed; }
+        .detail-hero { background: linear-gradient(120deg, #173b42, #167c80); }
+        .detail-hero .eyebrow { color: #c2e0dc; }
+        .login-art { background: radial-gradient(ellipse at 93% 76%, #167c8055 0, transparent 43%), #173b42; }
+        .login-art-copy h1 em { color: #b9ddda; }
+        .login-art-kicker { color: #b9ddda; }
+        .book-stack span:nth-child(1) { background: #d2a66e; }
+        .book-stack span:nth-child(2) { background: #167c80; }
+        .book-stack span:nth-child(3) { background: #759994; }
+        .book-stack span:nth-child(4) { background: #e0c48e; }
+        .pagination-wrap span[aria-current] span { border-color: #167c80; background: #167c80; }
     </style>
 </head>
 <body>

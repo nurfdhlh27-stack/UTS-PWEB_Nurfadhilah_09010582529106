@@ -1,6 +1,6 @@
 # UTS Perpustakaan
 
-Aplikasi Laravel sederhana untuk mengelola data buku perpustakaan. Nama folder proyek dapat disesuaikan menjadi `uts_nama_nim` sesuai nama dan NIM mahasiswa.
+Aplikasi Laravel untuk mengelola koleksi buku perpustakaan. Nama folder proyek dapat disesuaikan menjadi `uts_nama_nim` sesuai nama dan NIM mahasiswa.
 
 ## Persyaratan
 
@@ -20,17 +20,24 @@ php artisan serve
 
 Buka `http://127.0.0.1:8000` lalu masuk dengan akun demo:
 
-- Email: `test@example.com`
-- Kata sandi: `password`
+- Username: `Dhilah123` (atau email `test@example.com`)
+- Kata sandi: `Dhilah123`
+
+Akun demo dibuat oleh seeder untuk pengembangan lokal. Ganti kredensial tersebut sebelum aplikasi digunakan di lingkungan produksi.
 
 Untuk instalasi ulang database lokal, jalankan `php artisan migrate:fresh --seed`. Perintah tersebut akan menghapus semua data pada database yang terhubung.
 
 ## Fitur
 
-- Autentikasi login/logout; seluruh halaman dan operasi buku mensyaratkan pengguna masuk.
-- CRUD buku beserta pencarian judul, penulis, dan kategori, detail buku, serta pagination.
-- Kategori memiliki banyak buku; setiap buku memiliki satu kategori.
-- Validasi input dan foreign key `books.category_id`.
+- **MVC:** route di `routes/web.php`, controller di `app/Http/Controllers`, model di `app/Models`, dan tampilan Blade di `resources/views`.
+- **Authentication:** login dengan username atau email dan logout; operasi buku dilindungi middleware `auth`.
+- **CRUD:** buku dapat ditambah, dilihat, diubah, dan dihapus melalui `BookController`, dengan validasi input.
+- **Eloquent ORM:** query dan operasi data buku, kategori, dan pengguna menggunakan model Eloquent.
+- **Migration:** struktur tabel pengguna, kategori, dan buku dikelola melalui `database/migrations`.
+- **Seeder:** `DatabaseSeeder` membuat akun demo, kategori, dan contoh buku dengan aman saat dijalankan berulang.
+- **Relationship:** satu kategori memiliki banyak buku (`Category::books`), dan setiap buku dimiliki satu kategori (`Book::category`); foreign key kategori membatasi penghapusan kategori yang masih digunakan.
+- **Git:** proyek ini berada dalam repository Git. Gunakan `git status` untuk melihat perubahan dan `git add`/`git commit` untuk menyimpan pekerjaan.
+- Pencarian berdasarkan judul, penulis, dan kategori, serta pagination daftar buku.
 
 ## Pengujian
 
